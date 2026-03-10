@@ -1,0 +1,19 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Danjong Preview</title>
+<style>body{margin:0;background:#0b1020;color:#fff;font-family:sans-serif}#c{display:block;margin:0 auto;max-width:100vw;height:auto} .tip{padding:12px;text-align:center;color:#ddd}</style>
+</head><body>
+<canvas id="c" width="1280" height="720"></canvas>
+<div class="tip">ffmpeg가 없어 HTML 미리보기로 생성됨 (재생 버튼 없이 자동 루프)</div>
+<script>
+const c=document.getElementById('c'),x=c.getContext('2d');
+function draw(t){const s=t/1000,w=c.width,h=c.height;
+const g=x.createLinearGradient(0,0,w,h);g.addColorStop(0,'#0b1020');g.addColorStop(1,'#301014');x.fillStyle=g;x.fillRect(0,0,w,h);
+x.fillStyle='rgba(0,0,0,.3)';x.fillRect(0,0,w,100);x.fillRect(0,h-120,w,120);
+x.fillStyle='#fff3d0';x.font='bold 76px sans-serif';x.textAlign='center';x.fillText('단종과 엄흥도',w/2,120);
+x.fillStyle='#f14949';x.font='bold 44px sans-serif';x.fillText('지워진 왕, 금기를 깬 이름',w/2,180);
+const line=s%15<5?'00:00-05:00 소년 왕의 추락 [실록 기반]':(s%15<10?'05:00-10:00 엄흥도의 결단 [전승 기반]':'10:00-15:00 기억은 왜 살아남았나');
+x.fillStyle='rgba(15,19,38,.75)';x.fillRect(80,260,w-160,280);
+x.fillStyle='#fff';x.font='bold 48px sans-serif';x.fillText(line,w/2,360);
+x.fillStyle='#ffe9a8';x.font='bold 52px sans-serif';x.fillText('권력은 기억까지 지울 수 있는가',w/2,450);
+const px=(s*180)%(w+300)-150;x.strokeStyle='rgba(255,80,80,.45)';x.lineWidth=6;x.beginPath();x.moveTo(px,220);x.lineTo(px+180,560);x.stroke();
+requestAnimationFrame(draw)}requestAnimationFrame(draw);
+</script></body></html>
